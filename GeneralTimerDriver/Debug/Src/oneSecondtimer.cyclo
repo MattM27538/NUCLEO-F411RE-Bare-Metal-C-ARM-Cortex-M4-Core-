@@ -1,0 +1,9 @@
+../Src/oneSecondtimer.c:6:6:blinkPA5LED	1
+../Src/oneSecondtimer.c:21:6:delay	2
+../Src/oneSecondtimer.c:29:6:resetTimer2StatusRegister	1
+../Src/oneSecondtimer.c:35:6:OneSecondTimer2Init	1
+../Src/oneSecondtimer.c:51:6:enableTimer2	1
+../Src/oneSecondtimer.c:57:6:setTimer2PrescalerValue	1
+../Src/oneSecondtimer.c:61:6:setTimer2AutoReloadValue	1
+../Src/oneSecondtimer.c:65:6:enableTimer2Counter	1
+../Src/oneSecondtimer.c:71:6:resetTimer2Counter	1

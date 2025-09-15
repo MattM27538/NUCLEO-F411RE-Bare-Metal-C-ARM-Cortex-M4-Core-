@@ -1,0 +1,7 @@
+../Src/sysTick.c:5:6:setSysTickCycles	1
+../Src/sysTick.c:9:6:resetSysTickCounter	1
+../Src/sysTick.c:13:6:setSysTickClockSource	1
+../Src/sysTick.c:17:6:toggleSysTickCounter	1
+../Src/sysTick.c:21:6:sysTickHasNotReachedZero	1
+../Src/sysTick.c:27:6:resetSysTickCTRL	1
+../Src/sysTick.c:31:6:sysTickDelayMS	3
