@@ -1,4 +1,5 @@
-#include <gpio.h>
+#include "gpio.h"
+#include "oneSecondTimer.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "stm32f4xx.h"
@@ -29,4 +30,19 @@ void PA5LedToggle(){
 	const uint32_t togglePinOnOff=(1U<<5);
 
 	GPIOA->ODR ^= togglePinOnOff;
+}
+
+void blinkPA5LED(){
+	PA5LedInit();
+
+	OneSecondTimer2Init();
+
+	while(true){
+
+		PA5LedToggle();
+
+		delay();
+
+		resetTimer2StatusRegister();
+	}
 }

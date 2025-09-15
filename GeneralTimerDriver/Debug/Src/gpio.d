@@ -6,7 +6,8 @@ Src/gpio.o: ../Src/gpio.c ../Inc/gpio.h \
  C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Include/cmsis_compiler.h \
  C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Include/cmsis_gcc.h \
  C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Include/mpu_armv7.h \
- C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+ C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+ ../Inc/oneSecondTimer.h
 ../Inc/gpio.h:
 C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h:
@@ -16,3 +17,4 @@ C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSI
 C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Include/cmsis_gcc.h:
 C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Include/mpu_armv7.h:
 C:/Users/MattM/STM32CubeIDE/workspace_1.19.0/GeneralTimerDriver/chipHeaders/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h:
+../Inc/oneSecondTimer.h:

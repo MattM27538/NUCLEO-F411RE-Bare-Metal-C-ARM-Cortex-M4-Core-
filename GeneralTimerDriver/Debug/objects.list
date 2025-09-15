@@ -1,7 +1,6 @@
 "./Src/gpio.o"
 "./Src/main.o"
 "./Src/oneSecondtimer.o"
-"./Src/sysTick.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f411retx.o"

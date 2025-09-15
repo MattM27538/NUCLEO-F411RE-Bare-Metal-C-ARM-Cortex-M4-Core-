@@ -1,4 +1,5 @@
-../Src/gpio.c:6:6:enableGPIOforAHB1	16	static
-../Src/gpio.c:10:6:setGPIOAModeToOutput	16	static
-../Src/gpio.c:16:6:PA5LedInit	24	static
-../Src/gpio.c:28:6:PA5LedToggle	16	static
+../Src/gpio.c:7:6:enableGPIOforAHB1	16	static
+../Src/gpio.c:11:6:setGPIOAModeToOutput	16	static
+../Src/gpio.c:17:6:PA5LedInit	24	static
+../Src/gpio.c:29:6:PA5LedToggle	16	static
+../Src/gpio.c:35:6:blinkPA5LED	8	static

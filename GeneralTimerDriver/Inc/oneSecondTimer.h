@@ -4,8 +4,6 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-void blinkPA5LED();
-
 void delay();
 
 void resetTimer2StatusRegister();

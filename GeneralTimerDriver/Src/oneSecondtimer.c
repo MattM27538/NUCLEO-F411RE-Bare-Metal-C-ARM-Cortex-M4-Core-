@@ -3,21 +3,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-void blinkPA5LED(){
-	PA5LedInit();
-
-	OneSecondTimer2Init();
-
-	while(true){
-
-		PA5LedToggle();
-
-		delay();
-
-		resetTimer2StatusRegister();
-	}
-}
-
 void delay(){
 	const uint32_t setStatusUpdateInterruptFlag = (1U<<0);
 

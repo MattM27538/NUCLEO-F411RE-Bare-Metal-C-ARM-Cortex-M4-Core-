@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000148c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00000903  00000000  00000000  000014bc  2**0
+ 12 .debug_info   00000920  00000000  00000000  000014bc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000311  00000000  00000000  00001dbf  2**0
+ 13 .debug_abbrev 0000033d  00000000  00000000  00001ddc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000000e0  00000000  00000000  000020d0  2**3
+ 14 .debug_aranges 000000e0  00000000  00000000  00002120  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000094  00000000  00000000  000021b0  2**0
+ 15 .debug_rnglists 00000094  00000000  00000000  00002200  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000de8b  00000000  00000000  00002244  2**0
+ 16 .debug_macro  0000de95  00000000  00000000  00002294  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00001254  00000000  00000000  000100cf  2**0
+ 17 .debug_line   00001266  00000000  00000000  00010129  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00050128  00000000  00000000  00011323  2**0
+ 18 .debug_str    00050128  00000000  00000000  0001138f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0006144b  2**0
+ 19 .comment      00000043  00000000  00000000  000614b7  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000264  00000000  00000000  00061490  2**2
+ 20 .debug_frame  00000264  00000000  00000000  000614fc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000062  00000000  00000000  000616f4  2**0
+ 21 .debug_line_str 00000062  00000000  00000000  00061760  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -79,7 +79,7 @@ Disassembly of section .text:
  80001d4:	0800046c 	.word	0x0800046c
 
 080001d8 <enableGPIOforAHB1>:
-#include <gpio.h>
+#include "oneSecondTimer.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "stm32f4xx.h"
@@ -194,54 +194,52 @@ void PA5LedToggle(){
  800027e:	bf00      	nop
  8000280:	40020000 	.word	0x40020000
 
-08000284 <main>:
+08000284 <blinkPA5LED>:
+
+void blinkPA5LED(){
+ 8000284:	b580      	push	{r7, lr}
+ 8000286:	af00      	add	r7, sp, #0
+	PA5LedInit();
+ 8000288:	f7ff ffd2 	bl	8000230 <PA5LedInit>
+
+	OneSecondTimer2Init();
+ 800028c:	f000 f837 	bl	80002fe <OneSecondTimer2Init>
+
+	while(true){
+
+		PA5LedToggle();
+ 8000290:	f7ff ffe4 	bl	800025c <PA5LedToggle>
+
+		delay();
+ 8000294:	f000 f80b 	bl	80002ae <delay>
+
+		resetTimer2StatusRegister();
+ 8000298:	f000 f81d 	bl	80002d6 <resetTimer2StatusRegister>
+		PA5LedToggle();
+ 800029c:	bf00      	nop
+ 800029e:	e7f7      	b.n	8000290 <blinkPA5LED+0xc>
+
+080002a0 <main>:
  ******************************************************************************
  */
 #include "oneSecondTimer.h"
 
 int main()
 {
- 8000284:	b580      	push	{r7, lr}
- 8000286:	af00      	add	r7, sp, #0
+ 80002a0:	b580      	push	{r7, lr}
+ 80002a2:	af00      	add	r7, sp, #0
 	blinkPA5LED();
- 8000288:	f000 f803 	bl	8000292 <blinkPA5LED>
- 800028c:	2300      	movs	r3, #0
+ 80002a4:	f7ff ffee 	bl	8000284 <blinkPA5LED>
+ 80002a8:	2300      	movs	r3, #0
 }
- 800028e:	4618      	mov	r0, r3
- 8000290:	bd80      	pop	{r7, pc}
+ 80002aa:	4618      	mov	r0, r3
+ 80002ac:	bd80      	pop	{r7, pc}
 
-08000292 <blinkPA5LED>:
+080002ae <delay>:
 #include "oneSecondTimer.h"
 #include "gpio.h"
 #include <stdint.h>
 #include <stdbool.h>
-
-void blinkPA5LED(){
- 8000292:	b580      	push	{r7, lr}
- 8000294:	af00      	add	r7, sp, #0
-	PA5LedInit();
- 8000296:	f7ff ffcb 	bl	8000230 <PA5LedInit>
-
-	OneSecondTimer2Init();
- 800029a:	f000 f830 	bl	80002fe <OneSecondTimer2Init>
-
-	while(true){
-
-		PA5LedToggle();
- 800029e:	f7ff ffdd 	bl	800025c <PA5LedToggle>
-
-		delay();
- 80002a2:	f000 f804 	bl	80002ae <delay>
-
-		resetTimer2StatusRegister();
- 80002a6:	f000 f816 	bl	80002d6 <resetTimer2StatusRegister>
-		PA5LedToggle();
- 80002aa:	bf00      	nop
- 80002ac:	e7f7      	b.n	800029e <blinkPA5LED+0xc>
-
-080002ae <delay>:
-	}
-}
 
 void delay(){
  80002ae:	b480      	push	{r7}
@@ -512,7 +510,7 @@ LoopFillZerobss:
 /* Call the application's entry point.*/
 
   bl main
- 8000402:	f7ff ff3f 	bl	8000284 <main>
+ 8000402:	f7ff ff4d 	bl	80002a0 <main>
 
 08000406 <LoopForever>:
 
